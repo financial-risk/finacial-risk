@@ -1,0 +1,30 @@
+import pandas as pd
+import numpy as py
+import matplotlib.pyplot as plt
+
+def regulators(): # 监管部门大类，分类依据是天风证券P9
+    ''
+
+def agency(): # 中介机构大类
+    ''
+
+def corporation(): # 公司类
+    ''
+
+def report_item_relations(): # 报表项目关系类
+    monetary_funds2(monetary_funds=1, other_current_assets=1, short_term_borrowing=1, other_current_liabilities=1, bonds_payable=1)
+    #这里给参数赋值只是举例，实际依据report_item_relations函数的输入确定
+
+'''
+我们写的是一段段函数？依据前端的输入（公司名、财报等等）返还文字、图形、数值给前端的那种？
+如果这样，可以先按照以上四大块分类，每块类名再依据更小的函数按if-else进行财务检验。（例：货币资金充裕，却有许多有息或高息负债，体现在下面的monetary_funds2函数中）
+在软院做的文件里面，依次调用这四个函数即可；或者也可以我们把它们封装成一个更大的函数，直接调用。
+'''
+
+def monetary_funds2(monetary_funds, other_current_assets, short_term_borrowing, other_current_liabilities, bonds_payable):
+    real_monetary_funds = monetary_funds + other_current_assets # 广义的货币资金等于货币资金科目+其他流动性资产
+    interest_bearing_liabilities = short_term_borrowing + other_current_liabilities + bonds_payable # 有息负债等于短期借款+其他流动性负债+应付债券
+    if real_monetary_funds/interest_bearing_liabilities<=0.8:
+        print("有财务风险") # 瞎定了一个标准，可以更改；另外也不可能直接输出，这里会用一串if-elif-else给出信用评级
+
+report_item_relations() # 试运行
